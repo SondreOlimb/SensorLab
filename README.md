@@ -1,9 +1,9 @@
-#Code for four lab assignments in TTT4280 Sensorer og instrumentering
+# Code for four lab assignments in TTT4280 Sensorer og instrumentering
 
 
 
 
-##Cloning repository
+## Cloning repository
 1. clone the repository:
 
     HTTPS:
