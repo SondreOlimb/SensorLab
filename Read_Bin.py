@@ -74,12 +74,11 @@ def read_and_fft(path):
     #####num_of_samples = data.shape[0]  # returns shape of matrix
     num_of_samples = len(data[1])
     t = np.linspace(start=0, stop=num_of_samples * sample_period, num=num_of_samples)
-    b, a = signal.butter(2,400, 'highpass', analog=False, output="ba",fs=Sampling_freq)
+    b, a = signal.butter(4,150, 'highpass', analog=False, output="ba",fs=Sampling_freq)
     data = signal.lfilter(b, a, data, axis=- 1,zi=None)  # finding the resolution and converting the bit value to the coresponding value in Volts
 
-    #b, a = signal.butter(2, 2000, 'lowpass', analog=False, output="ba", fs=Sampling_freq)
-    #data = signal.lfilter(b, a, data, axis=- 1,zi=None)  # finding the resolution and converting the bit value to the coresponding value in Volts
-
+    b, a = signal.butter(6, 250, 'lowpass', analog=False, output="ba", fs=Sampling_freq)
+    data = signal.lfilter(b, a, data, axis=- 1,zi=None)  # finding the resolution and converting the bit value to the coresponding value in Volts
 
 
     #data = autocorr(data)
@@ -111,4 +110,4 @@ def read_and_fft(path):
 
 
 
-    return t, data,freq,spectrum
+    return t, data,freq,spectrum,sample_period

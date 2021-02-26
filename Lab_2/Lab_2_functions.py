@@ -41,8 +41,8 @@ def time_delay(m_1,m_2,f_s):
     #plt.show()
     #plt.plot(m_1_upsampled)
     #plt.show()
-    plt.plot(r)
-    plt.show()
+    #plt.plot(r)
+    #plt.show()
 
     return delta_t,l
 
@@ -89,10 +89,22 @@ def from_file_to_angle(filename):
 
 angle_array=[]
 for i in range(1,11):
-    name = "data_1m/"+str(i)+".bin"
-    angle = from_file_to_angle(name)
-    angle_array.append(angle)
+    try:
+        name = "data-several/"+str(i)+".bin"
+        angle = from_file_to_angle(name)
+        angle_array.append(angle)
+    except:
+        print("nr9")
 
-var = np.var(angle_array,ddof=1)
-print(np.degrees(np.sqrt(var)))
+#var = np.var(angle_array,ddof=1)
+#print(np.degrees(np.sqrt(var)))
+
+
+#autocorr = signal.correlate(data[3],data[3],"full")
+#length = round(len(autocorr)/2)
+
+#plt.acorr(data[3], usevlines=True, normed=True, maxlags=50, lw=2)
+#plt.show()
+
+
 
