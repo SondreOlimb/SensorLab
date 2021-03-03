@@ -6,7 +6,7 @@ import sys
 
 import Read_Bin
 
-t, data_voltage, freq, spectrum = Read_Bin.read_and_fft("RawData/wn.bin")
+t, data_voltage, freq, spectrum,s= Read_Bin.read_and_fft("RawData/wn.bin")
 
 
 

@@ -7,7 +7,7 @@ import Read_Bin
 
 sampling = 31250
 
-t, data, freq, spectrum = Read_Bin.read_and_fft("RawData/0_deg.bin")
+t, data, freq, spectrum,s = Read_Bin.read_and_fft("RawData/0_deg.bin")
 
 def time_delay(m_1,m_2,f_s):
     """
@@ -37,8 +37,8 @@ def time_delay(m_1,m_2,f_s):
 
 
 
-    #plt.plot(m_1)
-    #plt.show()
+    plt.plot(m_1)
+    plt.show()
     #plt.plot(m_1_upsampled)
     #plt.show()
     #plt.plot(r)
@@ -79,7 +79,7 @@ cros_m_2_m_3 = time_delay(data[3],data[4],sampling)
 
 def from_file_to_angle(filename):
 
-    t, data, freq, spectrum = Read_Bin.read_and_fft(filename)
+    t, data, freq, spectrum,s = Read_Bin.read_and_fft(filename)
     angle = get_angle(data[2],data[3],data[4])
 
     print("The angel of the sound is", np.degrees(get_angle(data[2],data[3],data[4])))
