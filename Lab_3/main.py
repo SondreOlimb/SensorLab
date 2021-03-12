@@ -13,7 +13,7 @@ f_s=31250
 #######
 
 #Choose dataset
-dataset = 3
+dataset = 2
 
 fig, axs = plt.subplots(nrows=3, ncols=1)
 
@@ -23,6 +23,8 @@ fig, axs = plt.subplots(nrows=3, ncols=1)
 file_name ="Raw_data_4/Dunkedata"+str(dataset)+".bin"
 
 t, data, freq, spectrum,sample_period = Read_Bin.read_and_fft(file_name)
+
+data = signal.detrend(data)
 
 #Data[0] is the IF_I
 #Data[1] is the IF_Q
@@ -55,7 +57,7 @@ x = x*signal.windows.hann(len(x)) #using a hamming window to reduce the sidelobe
 """
 Solution 2
 """
-data_fft = np.fft.fft(x,31250*4) #Take the fast fourier transform with length 4 times sampling frequency og the complex vector array
+data_fft = np.fft.fft(x,31250*6) #Take the fast fourier transform with length 4 times sampling frequency og the complex vector array
 
 
 data_fft=np.trim_zeros(data_fft, trim='fb')
@@ -106,7 +108,7 @@ cell_text = [[np.round(2413/15*data_stopw[dataset-1],2),data_stopw[dataset-1]],[
 
 
 
-columns = ('Doppler freq[HZ]', 'Velocity[m/s]')
+columns = ('Doppler freq [Hz]', 'Velocity [m/s]')
 rows = ["Stopwatch","Radar","Deviation"]
 the_table = axs[2].table(cellText=cell_text,
                       rowLabels=rows,
