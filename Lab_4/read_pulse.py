@@ -12,18 +12,7 @@ window = 51
 fps = 40
 #######
 
-def autocorr(x):
-    AC =[]
 
-
-
-
-    result = signal.fftconvolve(x, x[::-1], mode='full')
-
-    l = len(result)//2
-
-
-    return result[l:]
 
 
 def read_pulse(file_location,x_min,x_max):
