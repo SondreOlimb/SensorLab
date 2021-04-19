@@ -218,4 +218,4 @@ def read_pulse(file_location,x_min,x_max):
 #read_pulse("trans_2_ex/jonas_puls2_1.txt",Min_puls / 60, Max_puls / 60)
 #read_pulse("data1_ex/jonas_puls5.txt",-Max_puls / 60,Max_puls / 60)
 #read_pulse("rob_1_ex/jonas_puls7_3.txt",-Max_puls / 60,Max_puls / 60)
-read_pulse("ref_4_ex/jonas_puls6_4.txt",Min_puls / 60,Max_puls / 60)
+#read_pulse("ref_4_ex/jonas_puls6_4.txt",Min_puls / 60,Max_puls / 60)
