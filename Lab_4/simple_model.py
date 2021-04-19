@@ -14,6 +14,7 @@ def mua_blood_oxy(x): return np.interp(x, muabo[:, 0], muabo[:, 1])
 def mua_blood_deoxy(x): return np.interp(x, muabd[:, 0], muabd[:, 1])
 
 bvf = 0.01 # Blood volume fraction, average blood amount in tissue
+bvf_1 = 1
 oxy = 0.8 # Blood oxygenation
 
 # Absorption coefficient ($\mu_a$ in lab text)
@@ -22,6 +23,7 @@ mua_other = 25 # Background absorption due to collagen, et cetera
 mua_blood = (mua_blood_oxy(wavelength)*oxy # Absorption due to
             + mua_blood_deoxy(wavelength)*(1-oxy)) # pure blood
 mua = mua_blood*bvf + mua_other
+
 
 # reduced scattering coefficient ($\mu_s^\prime$ in lab text)
 # the numerical constants are thanks to N. Bashkatov, E. A. Genina and
@@ -41,7 +43,7 @@ Pen= 0
 for i in range(len(musr)):
     C= np.sqrt(3*(mua[i]+musr[i])*mua[i])
     Pen = 1/C
-    print(Pen)
+    print("penetrasnon",Pen)
 
     T = np.exp(-C*d)
     #print(T)
@@ -57,13 +59,13 @@ for i in range(len(musr)):
 for i in range(len(musr)):
     dia = 300*10**(-6)
     C = np.sqrt(3 * (mua[i] + musr[i]) * mua[i])
-    T_1=np.exp(-C*dia*0.01)
-    T_100 =np.exp(-C*dia)
-    print("T_100%",T_100)
+    T_1=np.exp(-C*dia)
+    #T_100 =np.exp(-C*dia)
+    #print("T_100%",T_100)
     print("T_1%",T_1)
-    K= np.abs(T_100-T_1)/T_1
-    print("K",K)
-    print("#####\n")
+    #K= np.abs(T_100-T_1)/T_1
+    #print("K",K)
+    #print("#####\n")
 
 
 
